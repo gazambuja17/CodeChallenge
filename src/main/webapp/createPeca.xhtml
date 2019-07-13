@@ -10,43 +10,44 @@
 <h:head>
 <title>Cadastro de Peças</title>
 </h:head>
-<h:body>
-	<h1>Cadastrar Peça</h1>
-	<h5>Campos com (*) são obrigatórios</h5>
-	
+<h:body>	
 	<h:form>
-		<h:panelGrid columns="2" width="30%" class="panelGridCadastro" style="border: none;">
+	
+	<p:panel header="Cadastrar Peça">
+	<h6>Os campos com (*) são obrigatórios.</h6>
+	<p:messages autoUpdate="true" closable="true" id="messages" />
+		<p:panelGrid columns="2">
 			<h:outputLabel value="Nome da Peça: *" />
-			<h:inputText id="nome"
+			<p:inputText id="nome"
 				value="#{pecasBean.nome}"
 				required="true" 
 				requiredMessage="Campo Nome da Peça é obrigatório." />
 
 			<h:outputLabel value="Veículo de Aplicação: " />
-			<h:inputText id="veiculoAplicacao"
+			<p:inputText id="veiculoAplicacao"
 				value="#{pecasBean.veiculoAplicacao}"
 				required="false" />
 
 			<h:outputLabel value="Peso Líquido: *" />
-			<h:inputText id="pesoLiquido"
+			<p:inputText id="pesoLiquido"
 				value="#{pecasBean.pesoLiquido}"
 				required="true"
 				requiredMessage="Campo Peso Líquido é obrigatório." />
 	
 			<h:outputLabel value="Peso Bruto: *" />
-			<h:inputText id="pesoBruto"
+			<p:inputText id="pesoBruto"
 				value="#{pecasBean.pesoBruto}"
 				required="true"
 				requiredMessage="Campo Peso Bruto é obrigatório." />
-		</h:panelGrid>
-
-		<h:panelGrid columns="2" class="panelGridBotoes">
-			<h:commandButton value="Voltar"
+		</p:panelGrid>
+		<h1></h1>
+		
+			<p:commandButton value="Voltar"
 				onclick="history.go(-1);return false;" />
 
-			<h:commandButton value="Salvar"
-				action="#{pecasBean.salvarPeca()}" />
-		</h:panelGrid>
+			<p:commandButton value="Salvar"
+				action="#{pecasBean.salvarPeca()}" styleClass="ui-priority-primary" />
+		</p:panel>
 	</h:form>
 
 </h:body>	

@@ -15,6 +15,8 @@ import br.com.zen.model.TbPecas;
  */
 @ManagedBean(name = "pecasBean")
 public class PecasBean {
+	
+	//private static final Logger logger = LogManager.getLogger(PecasBean.class);
 
 	private int idPeca;
 	private String nome;
@@ -88,11 +90,12 @@ public class PecasBean {
 			// Novas peças tem que ter peso líquido < peso bruto
 			if (pesoLiquido.doubleValue() < pesoBruto.doubleValue()) {
 				System.out.println("Peso Líquido é menor que Peso Bruto.");
+				//logger.info("Peso Líquido é menor que Peso Bruto.");
 
 				pecasDAO.salvarPeca(pecaNova);
+				//LimparCampos();
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-						"Cadastro da nova peça realizado com sucesso", "Sucesso."));
-				LimparCampos();
+						"Cadastro da nova peça realizado com sucesso", "Sucesso."));			
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Peso Líquido deve ser menor que Peso Bruto. ", "Erro."));
@@ -101,6 +104,7 @@ public class PecasBean {
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,
 					"Ocorreu um erro ao tentar cadastrar uma nova peça.", "Erro ao cadastrar."));
+			//logger.error("Ocorreu um erro ao tentar cadastrar uma nova peça.");
 			e.printStackTrace();
 		}
 	}
@@ -116,6 +120,7 @@ public class PecasBean {
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,
 					"Ocorreu um erro ao tentar remover a peça.", "Erro ao remover."));
+			//logger.error("Ocorreu um erro ao tentar remover uma peça.");
 			e.printStackTrace();
 		}
 	}

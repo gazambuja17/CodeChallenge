@@ -8,37 +8,30 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Lista de Peças</title>
+	<title>Lista de Peças do Catálogo</title>
 </h:head>
 <h:body>
-	<h1>Lista de todas as Peças</h1>
+	<h1>Lista de Peças do Catálogo</h1>
 	<h:form>
-		<h:dataTable value="#{pecasBean.pecas}" var="peca" border="1">
+		<h:dataTable value="#{pecasBean.pecas}" var="peca" border="1" emptyMessage="#{messages['general.message.EmptyList']}">
 			<h:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{peca.idPeca}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
+				<f:facet name="header">Nome da Peça</f:facet>
 				<h:outputText value="#{peca.nome}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Veículo Aplicação</f:facet>
+				<f:facet name="header">Veículo de Aplicação</f:facet>
 				<h:outputText value="#{peca.veiculoAplicacao}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Peso Líquido</f:facet>
+				<f:facet name="header">Peso Líquido (kg)</f:facet>
 				<h:outputText value="#{peca.pesoLiquido}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Peso Bruto</f:facet>
+				<f:facet name="header">Peso Bruto (kg)</f:facet>
 				<h:outputText value="#{peca.pesoBruto}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Delete Student" />
-				</f:facet>
-				<h:commandLink value="Delete"
+				<h:commandButton value="Apagar"
 					action="#{pecasBean.removerPeca(peca)}" />
 			</h:column>
 		</h:dataTable>

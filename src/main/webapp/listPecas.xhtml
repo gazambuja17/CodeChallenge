@@ -11,33 +11,58 @@
 	<title>Lista de Peças do Catálogo</title>
 </h:head>
 <h:body>
-	<h1>Lista de Peças do Catálogo</h1>
 	<h:form>
-		<h:dataTable value="#{pecasBean.pecas}" var="peca" border="1" emptyMessage="#{messages['general.message.EmptyList']}">
-			<h:column>
-				<f:facet name="header">Nome da Peça</f:facet>
+
+		<p:panel>
+			<h1>Lista de Peças do Catálogo</h1>
+		</p:panel>
+		<h1></h1>
+
+		<p:messages autoUpdate="true" closable="true" id="messages" />
+
+		<p:dataTable value="#{pecasBean.pecas}" var="peca" border="1"
+			rowIndexVar="index" rows="10" style="width:100%"
+			paginator="true" lazy="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="10,20,50" rendered="true"
+			resizableColumns="true" emptyMessage="Não há resultados para exibir.">
+
+			<p:column headerText="#">
+				<h:outputText value="#{index + 1}" />
+			</p:column>
+			<p:column headerText="Nome da Peça">
 				<h:outputText value="#{peca.nome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Veículo de Aplicação</f:facet>
+			</p:column>
+			<p:column headerText="Veículo de Aplicação">
 				<h:outputText value="#{peca.veiculoAplicacao}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Peso Líquido (kg)</f:facet>
+			</p:column>
+			<p:column headerText="Peso Líquido (g)">
 				<h:outputText value="#{peca.pesoLiquido}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Peso Bruto (kg)</f:facet>
+			</p:column>
+			<p:column headerText="Peso Bruto (g)">
 				<h:outputText value="#{peca.pesoBruto}" />
-			</h:column>
-			<h:column>
-				<h:commandButton value="Apagar"
-					action="#{pecasBean.removerPeca(peca)}" />
-			</h:column>
-		</h:dataTable>
-		<center>
-            <h:commandButton action="createPeca.xhtml?faces-redirect=true" value="Cadastrar uma Peça" />
-        </center>
+			</p:column>
+			
+			<p:column>
+			<div style="text-align: center;">
+				<p:commandButton value="Apagar"
+					actionListener="#{pecasBean.removerPeca(peca)}" update="@form"
+					ajax="true">
+					<p:confirm header="Confirmação" message="Tem certeza que deseja apagar ?" />
+				</p:commandButton>
+				</div>
+			</p:column>
+
+		</p:dataTable>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Sim" type="button"
+				styleClass="ui-confirmdialog-yes" />
+			<p:commandButton value="Não" type="button"
+				styleClass="ui-confirmdialog-no" />
+		</p:confirmDialog>
+		<h1></h1>
+		<p:commandButton action="createPeca.xhtml?faces-redirect=true"
+			value="Cadastrar uma Peça" />
 	</h:form>
 
 </h:body>

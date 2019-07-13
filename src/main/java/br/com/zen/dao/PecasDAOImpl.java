@@ -16,6 +16,8 @@ import br.com.zen.model.TbPecas;
  */
 @Stateless
 public class PecasDAOImpl implements PecasDAO {
+	
+	//private static final Logger logger = LogManager.getLogger(PecasDAOImpl.class);
 
 	EntityManagerFactory emf;
 	EntityManager manager;
@@ -34,11 +36,14 @@ public class PecasDAOImpl implements PecasDAO {
 	@Override
 	public void salvarPeca(TbPecas tbPeca) {
 		System.out.println("Salvando uma nova peça.");
+		//logger.info("Salvando uma nova peça.");
+		
 		try {
 			manager.getTransaction().begin();
 			manager.persist(tbPeca);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
+			//logger.error("Não foi possível salvar uma nova peça.");
 			e.printStackTrace();
 		}	
 	}
@@ -52,11 +57,13 @@ public class PecasDAOImpl implements PecasDAO {
 	@Override
 	public void atualizarPeca(TbPecas tbPeca) {
 		System.out.println("Atualizando uma nova peça.");
+		//logger.info(""Atualizando uma nova peça."");
 		try {
 			manager.getTransaction().begin();
 			manager.merge(tbPeca);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
+			//logger.error("Não foi possível atualizar uma nova peça.");
 			e.printStackTrace();
 		}
 	}
@@ -70,11 +77,13 @@ public class PecasDAOImpl implements PecasDAO {
 	@Override
 	public void removerPeca(TbPecas tbPeca) {
 		System.out.println("Removendo a peça com nome: " + tbPeca.getNome());
+		//logger.info(""Removendo a peça com nome: " + tbPeca.getNome()");
 		try {
 			manager.getTransaction().begin();
 			manager.remove(tbPeca);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
+			//logger.error("Não foi possível remover uma peça.");
 			e.printStackTrace();
 		}
 	}

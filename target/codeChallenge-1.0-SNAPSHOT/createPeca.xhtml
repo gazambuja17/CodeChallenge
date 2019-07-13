@@ -12,17 +12,17 @@
 </h:head>
 <h:body>
 	<h1>Cadastrar Peça</h1>
-
+	<h5>Campos com (*) são obrigatórios</h5>
+	
 	<h:form>
-		<h:panelGrid columns="2" width="30%" class="panelGridCadastro"
-			style="border: none;">
+		<h:panelGrid columns="2" width="30%" class="panelGridCadastro" style="border: none;">
 			<h:outputLabel value="Nome da Peça: *" />
 			<h:inputText id="nome"
 				value="#{pecasBean.nome}"
 				required="true" 
 				requiredMessage="Campo Nome da Peça é obrigatório." />
 
-			<h:outputLabel value="Veículo Aplicação: " />
+			<h:outputLabel value="Veículo de Aplicação: " />
 			<h:inputText id="veiculoAplicacao"
 				value="#{pecasBean.veiculoAplicacao}"
 				required="false" />
@@ -44,7 +44,7 @@
 			<h:commandButton value="Voltar"
 				onclick="history.go(-1);return false;" />
 
-			<h:commandButton value="Salvar Peca"
+			<h:commandButton value="Salvar"
 				action="#{pecasBean.salvarPeca()}" />
 		</h:panelGrid>
 	</h:form>
