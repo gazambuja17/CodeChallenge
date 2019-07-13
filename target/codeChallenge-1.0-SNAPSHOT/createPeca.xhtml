@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<title>Cadastro de Peças</title>
+</h:head>
+<h:body>
+	<h1>Cadastrar Peça</h1>
+
+	<h:form>
+		<h:panelGrid columns="2" width="30%" class="panelGridCadastro"
+			style="border: none;">
+			<h:outputLabel value="Nome da Peça: *" />
+			<h:inputText id="nome"
+				value="#{pecasBean.nome}"
+				required="true" 
+				requiredMessage="Campo Nome da Peça é obrigatório." />
+
+			<h:outputLabel value="Veículo Aplicação: " />
+			<h:inputText id="veiculoAplicacao"
+				value="#{pecasBean.veiculoAplicacao}"
+				required="false" />
+
+			<h:outputLabel value="Peso Líquido: *" />
+			<h:inputText id="pesoLiquido"
+				value="#{pecasBean.pesoLiquido}"
+				required="true"
+				requiredMessage="Campo Peso Líquido é obrigatório." />
+	
+			<h:outputLabel value="Peso Bruto: *" />
+			<h:inputText id="pesoBruto"
+				value="#{pecasBean.pesoBruto}"
+				required="true"
+				requiredMessage="Campo Peso Bruto é obrigatório." />
+		</h:panelGrid>
+
+		<h:panelGrid columns="2" class="panelGridBotoes">
+			<h:commandButton value="Voltar"
+				onclick="history.go(-1);return false;" />
+
+			<h:commandButton value="Salvar Peca"
+				action="#{pecasBean.salvarPeca()}" />
+		</h:panelGrid>
+	</h:form>
+
+</h:body>	
+</html>

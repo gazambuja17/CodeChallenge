@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Peças</title>
+</h:head>
+<h:body>
+	<h1>Lista de todas as Peças</h1>
+	<h:form>
+		<h:dataTable value="#{pecasBean.pecas}" var="peca" border="1">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{peca.idPeca}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{peca.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Veículo Aplicação</f:facet>
+				<h:outputText value="#{peca.veiculoAplicacao}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Peso Líquido</f:facet>
+				<h:outputText value="#{peca.pesoLiquido}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Peso Bruto</f:facet>
+				<h:outputText value="#{peca.pesoBruto}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Delete Student" />
+				</f:facet>
+				<h:commandLink value="Delete"
+					action="#{pecasBean.removerPeca(peca)}" />
+			</h:column>
+		</h:dataTable>
+		<center>
+            <h:commandButton action="createPeca.xhtml?faces-redirect=true" value="Cadastrar uma Peça" />
+        </center>
+	</h:form>
+
+</h:body>
+</html>
